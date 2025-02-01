@@ -1,0 +1,58 @@
+[package]
+name = "rust-joyelibert"
+version = "0.4.3"
+edition = "2018"
+description = "Efficient pure-Rust library for the Paillier partially homomorphic encryption scheme"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/ZenGo-X/rust-paillier"
+categories = ["cryptography", "algorithms"]
+keywords = ["paillier", "homomorphic", "encryption", "zero-knowledge", "cryptoagorithms"]
+
+[dependencies]
+rayon = "1.1"
+serde = { version = "1.0", features = ["derive"] }
+curv-kzen =  { path = "../rust-curv", default-features = false }
+log = "0.4.22"
+env_logger = "*"
+
+
+[dev-dependencies]
+bencher = "0.1"
+serde_json = "1.0"
+rand = "0.6"
+log = "0.4.22"
+env_logger = "*"
+
+[features]
+default = ["curv-kzen/rust-gmp-kzen"]
+
+[[bench]]
+name = "arith"
+harness = false
+
+[[bench]]
+name = "encryption"
+harness = false
+
+[[bench]]
+name = "keygen"
+harness = false
+
+[[bench]]
+name = "proof"
+harness = false
+
+[[example]]
+name = "basic"
+
+[[example]]
+name = "core"
+
+[[example]]
+name = "packed"
+
+[[example]]
+name = "simple-voting"
+
+[patch.crates-io]
+rust-gmp-kzen = { path = "../rust-gmp-kzen" }
